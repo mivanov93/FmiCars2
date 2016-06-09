@@ -1,0 +1,71 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Cars Catalog</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="css/toastr.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+<body ng-app="cars-catalog" ng-controller="IndexCtrl" ng-cloak>
+    <div class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="#/partialIndex" class="navbar-brand">Cars Catalogs</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li><a href="#/manufacturers">Manufacturers</a></li>
+                    <li><a href="#/cars">All cars</a></li>
+                    <li><a ng-click="mapDialog('lg')">Dealer map</a></li>
+                </ul>
+                <div class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/add-manufacturer">Add Manufacturer</a></li>
+                        <li><a href="#/add-car">Add Car</a></li>
+                        <li><a href="javascript:;" ng-click="loginDialog('lg')">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div ng-view>
+    </div>
+
+    <script src="lib/lodash.js"></script>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/spin.js"></script>
+    <script src="lib/toastr/toastr.min.js"></script>
+
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-resource.min.js"></script>
+    <script src="lib/angular/angular-route.min.js"></script>
+    <script src="lib/angular/angular-cookies.min.js"></script>
+    <script src="lib/bootstrap/ui-bootstrap-custom-tpls-0.13.0.js"></script>
+    <script src="lib/angular-spinner.js"></script>
+    <script src="lib/restangular.js"></script>
+    <script src="lib/ng-map.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/services/carsData.js"></script>
+    <script src="js/services/manufacturersData.js"></script>
+    <script src="js/services/userSrv.js"></script>
+
+    <script src="js/controllers/IndexCtrl.js"></script>
+    <script src="js/controllers/LoginDialogCtrl.js"></script>
+    <script src="js/controllers/CarsController.js"></script>
+    <script src="js/controllers/ManufacturersController.js"></script>
+    <script src="js/controllers/AddCarController.js"></script>
+    <script src="js/controllers/AddManufacturerController.js"></script>
+    <script src="js/controllers/Dealers.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<div class="container" ng-controller="AddCarController">
+
+    <div>
+        <span us-spinner spinner-key="spinner-add-cars"></span>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 well">
+            <form name="addCarForm" class="form-horizontal">
+                <fieldset>
+                    <legend class="text-center h2">Add new car</legend>
+
+                    <div class="form-group">
+                        <label for="car-model" class="col-md-2 control-label">
+                            <span class="text-danger">*</span>Info:
+                        </label>
+                        <div class="col-md-10">
+                            <input id="car-model" type="text" placeholder="model, engine etc." ng-model="car.Model" required="required" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Year" class="col-md-2 control-label">
+                            <span class="text-danger">*</span>Year:
+                        </label>
+                        <div class="col-md-10">
+                            <input id="Year" type="number" placeholder="first registration of the car" ng-model="car.Year" required="required" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="HorsePowers" class="col-md-2 control-label">
+                            <span class="text-danger">*</span>Power:
+                        </label>
+                        <div class="col-md-10">
+                            <input id="HorsePowers" type="number" placeholder="e.g. 180 hp" ng-model="car.HorsePowers" required="required" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ImageUrl" class="col-md-2 control-label">Image URL:</label>
+                        <div class="col-md-10">
+                            <input id="ImageUrl" type="url" placeholder="e.g. http://abc.com/img.jpg" ng-model="car.ImageUrl" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Manufacturer" class="col-md-2 control-label">
+                            <span class="text-danger">*</span>Manufacturer:
+                        </label>
+                        <div class="col-md-10">
+                            <input id="Manufacturer" type="text" placeholder="e.g. VW Group" ng-model="car.Manufacturer" required="required" class="form-control" />
+                        </div>
+                    </div>
+                    
+                    <div class="pull-right">
+                        <input type="submit" ng-click="postCarData(car,addCarForm)" ng-disabled="!addCarForm.$valid" class="btn btn-primary" value="Create" />
+                        <a href="#/" class="btn btn-warning">Cancel</a>
+                    </div>
+                </fieldset>
+            </form>
+            
+            <div ng-if="status.done && status.error === 1" class="alert text-danger text-center" style="margin: 0;">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span style="margin-right: 30px; ">Status: {{msg}}</span>
+                <button class="btn btn-default" type="button" ng-click="anotherOne()">Try again</button>
+            </div>
+            <div ng-if="status.done && status.error === 0" class="alert text-success text-center" style="margin: 0;">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                <span style="margin-right: 30px; ">Status: {{msg}}</span>
+                <button class="btn btn-default" type="button" ng-click="anotherOne()">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>

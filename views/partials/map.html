@@ -1,0 +1,39 @@
+﻿<div class="modal-header map-header">
+    
+    <div class="modal-title map-title">
+        <span class="h4">Autodealers Houses</span>
+        
+        <!-- "Close" dialog button -->
+        <button ng-click="ok()"
+                type="button"
+                class="close map-title-close"
+                aria-label="Close"
+                data-toggle="tooltip"
+                data-placement="top"
+                data-original-title="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+</div>
+    <div class="modal-body" map-lazy-load="http://maps.google.com/maps/api/js">
+        <map ng-if="mapOpts.render"
+             center="[42.7,23.3]"
+             zoom-control="true"
+             zoom="12">
+
+
+            <marker ng-repeat="$shop in data.rows"
+                    id="shopMarkerId{{::$shop.shop_id}}"
+                    position="[{{::$shop.shop_latitude}},{{::$shop.shop_longitude}}]"
+                    anchorpoint=""
+                    icon="{{::getShopImagePath($shop)}}"
+                    shape="{{::iconShape}}"
+                    on-click="showInfoWindow(event, $shop,'shopMarkerId'+$shop.shop_id)"
+                    title="{{::$shop.shop_name}}">
+            </marker>
+
+
+        </map>
+    </div>
+
