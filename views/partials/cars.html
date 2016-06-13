@@ -12,14 +12,14 @@
     <div ng-controller="CarsController"
          class="row">
 
-        <div ng-repeat="car in cars | filter:searchText"
+        <div ng-repeat="car in cars.car | filter:searchText"
              class="col-md-4">
 
             <div class="panel car" style="padding: 15px;">
 
                 <div class="row">
                     <div class="panel-title col-md-12" style="text-align:center; min-height: 50px;">
-                        <img src="{{car.ImageUrl}}" class="img-responsive center-block" alt="No image found" />
+                        <img src="{{car.imgUrl}}" class="img-responsive center-block" alt="No image found" />
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@
 
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
-                        <div class="h2 text-center" style="margin: 0 0 20px 0;">{{car.Model}}</div>
+                        <div class="h2 text-center" style="margin: 0 0 20px 0;">{{car.model}}</div>
                         <table class="table table-hover table-responsive">
                             <thead>
                                 <tr class="info">
@@ -37,25 +37,27 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>HorsePowers: </td>
-                                    <td>{{car.HorsePowers}}</td>
+                                    <td>Price: </td>
+                                    <td>{{car.price}}</td>
                                 </tr>
+                                <tr> <td>HorsePowers: </td>
+                                    <td>{{car.hp}}</td></tr>
                                 <tr>
                                     <td>Year: </td>
-                                    <td>{{car.Year}}</td>
+                                    <td>{{car.year}}</td>
                                 </tr>
                                 <tr>
                                     <td>Manufacturer: </td>
-                                    <td>{{car.Manufacturer.Name}}</td>
+                                    <td>{{car.man.name}}</td>
                                 </tr>
-                                <tr>
+<!--                                <tr>
                                     <td>Rating: </td>
                                     <td>
                                         {{car.Rating}}
                                         <rating ng-model="" readonly="true"></rating>
                                         <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
                                     </td>
-                                </tr>
+                                </tr>-->
                             </tbody>
                         </table>
                     </div>
@@ -65,6 +67,12 @@
                     <div class="col-md-6 col-md-offset-1">
                         <button type="button" class="btn btn-default">
                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star it!
+                        </button>
+                    </div>
+                     <div class="col-md-6 col-md-offset-1">
+                        <button type="button" class="btn btn-default"
+                                ng-click="carsDataSrv.deleteDataById(car.id,deletionDone)">
+                            <span class="glyphicon glyphicon-delete" aria-hidden="true"></span>Delete
                         </button>
                     </div>
                 </div>

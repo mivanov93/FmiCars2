@@ -1,6 +1,6 @@
 ﻿(function (angular, app) {
     "use strict";
-    var ctrlName = "DealersCtrl";
+    var ctrlName = "ManufacturersMapCtrl";
     app.controller(ctrlName, ['$scope', '$rootScope', '$log', '$modalInstance', '$timeout',
         function ($scope, $rootScope, $log, $modalInstance, $timeout) {
 

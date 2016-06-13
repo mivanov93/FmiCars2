@@ -15,7 +15,7 @@
                             <span class="text-danger">*</span>Info:
                         </label>
                         <div class="col-md-10">
-                            <input id="car-model" type="text" placeholder="model, engine etc." ng-model="car.Model" required="required" class="form-control" />
+                            <input id="car-model" type="text" placeholder="model, engine etc." ng-model="car.model" required="required" class="form-control" />
                         </div>
                     </div>
 
@@ -24,7 +24,7 @@
                             <span class="text-danger">*</span>Year:
                         </label>
                         <div class="col-md-10">
-                            <input id="Year" type="number" placeholder="first registration of the car" ng-model="car.Year" required="required" class="form-control" />
+                            <input id="Year" type="number" placeholder="first registration of the car" ng-model="car.year" required="required" class="form-control" />
                         </div>
                     </div>
 
@@ -33,33 +33,45 @@
                             <span class="text-danger">*</span>Power:
                         </label>
                         <div class="col-md-10">
-                            <input id="HorsePowers" type="number" placeholder="e.g. 180 hp" ng-model="car.HorsePowers" required="required" class="form-control" />
+                            <input id="hp" type="number" placeholder="e.g. 180 hp" ng-model="car.hp" required="required" class="form-control" />
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        <label for="Price" class="col-md-2 control-label">
+                            <span class="text-danger">*</span>Price:
+                        </label>
+                        <div class="col-md-10">
+                            <input id="Price" type="number" placeholder="e.g. 180 hp" ng-model="car.price" required="required" class="form-control" />
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="ImageUrl" class="col-md-2 control-label">Image URL:</label>
                         <div class="col-md-10">
-                            <input id="ImageUrl" type="url" placeholder="e.g. http://abc.com/img.jpg" ng-model="car.ImageUrl" class="form-control" />
+                            <input id="ImageUrl" type="url" placeholder="e.g. http://abc.com/img.jpg" ng-model="car.imgUrl" class="form-control" />
                         </div>
                     </div>
-
+     <div class="form-group">
+                        <label for="VideoUrl" class="col-md-2 control-label">Image URL:</label>
+                        <div class="col-md-10">
+                            <input id="VideoUrl" type="url" placeholder="e.g. http://youtube.com/something" ng-model="car.videoUrl" class="form-control" />
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="Manufacturer" class="col-md-2 control-label">
                             <span class="text-danger">*</span>Manufacturer:
                         </label>
                         <div class="col-md-10">
-                            <input id="Manufacturer" type="text" placeholder="e.g. VW Group" ng-model="car.Manufacturer" required="required" class="form-control" />
+                            <input id="Manufacturer" type="text" placeholder="e.g. VW Group" ng-model="car.manId" required="required" class="form-control" />
                         </div>
                     </div>
-                    
+
                     <div class="pull-right">
-                        <input type="submit" ng-click="postCarData(car,addCarForm)" ng-disabled="!addCarForm.$valid" class="btn btn-primary" value="Create" />
+                        <input type="submit" ng-click="postCarData(car, addCarForm)" ng-disabled="!addCarForm.$valid" class="btn btn-primary" value="Create" />
                         <a href="#/" class="btn btn-warning">Cancel</a>
                     </div>
                 </fieldset>
             </form>
-            
+
             <div ng-if="status.done && status.error === 1" class="alert text-danger text-center" style="margin: 0;">
                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                 <span style="margin-right: 30px; ">Status: {{msg}}</span>

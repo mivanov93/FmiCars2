@@ -21,7 +21,7 @@ app.controller('IndexCtrl', function CarsController($scope, $modal, $log) {
     $scope.mapDialog = function (size) {
         var modalInstance = $modal.open({
             templateUrl: 'views/partials/map.html',
-            controller: 'DealersCtrl',
+            controller: 'ManufacturersMapCtrl',
             size: size,
             resolve: {
             }

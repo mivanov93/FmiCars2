@@ -15,16 +15,30 @@
                             <span class="text-danger">*</span>Name:
                         </label>
                         <div class="col-md-10">
-                            <input id="manufacturer-name" type="text" placeholder="enter company name" ng-model="manufacturer.Name" required="required" class="form-control" />
+                            <input id="manufacturer-name" type="text" placeholder="enter company name" ng-model="manufacturer.name" required="required" class="form-control" />
                         </div>
                     </div>
-
+      <div class="form-group">
+                        <label for="manufacturer-lat" class="col-md-2 control-label">
+                            <span class="text-danger">*</span>Lat:
+                        </label>
+                        <div class="col-md-10">
+                            <input id="manufacturer-name" type="number" placeholder="enter latitude" ng-model="manufacturer.lat" required="required" class="form-control" />
+                        </div>
+                    </div>      <div class="form-group">
+                        <label for="manufacturer-name" class="col-md-2 control-label">
+                            <span class="text-danger">*</span>Long:
+                        </label>
+                        <div class="col-md-10">
+                            <input id="manufacturer-name" type="number" placeholder="enter longitude" ng-model="manufacturer.lon" required="required" class="form-control" />
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="manufacturer-image" class="col-md-2 control-label">
                             <span class="text-danger">*</span>Logo URL:
                         </label>
                         <div class="col-md-10">
-                            <input id="manufacturer-image" type="text" placeholder="e.g. http://abc.com/img.jpg" ng-model="manufacturer.ImageUrl" required="required" class="form-control" />
+                            <input id="manufacturer-image" type="text" placeholder="e.g. http://abc.com/img.jpg" ng-model="manufacturer.imgUrl" required="required" class="form-control" />
                         </div>
                     </div>
 

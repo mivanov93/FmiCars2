@@ -1,26 +1,42 @@
 'use strict';
 
-app.factory('carsDataSrv', function($http, $log, Restangular, baseServiceUrl) {
+app.factory('carsDataSrv', function ($http, $log,
+        baseServiceUrl) {
 
-    var path = '/api/Cars';
-    var carApi = Restangular.allUrl('Cars', baseServiceUrl + path);
-
-	return {
-		getData: function() {
-		    return carApi.getList();
-		},
-		postData: function (car) {
-		    console.log(JSON.stringify(car));
-		    return $http.post(
-                baseServiceUrl + '/api/Cars',
-                JSON.stringify(car),
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
+    var path = '/cars';
+    return {
+        getData: function (successCallBack) {
+            $http({method: 'GET', url: baseServiceUrl + '/cars'})
+                    .success(
+                            successCallBack
+                            )
+                    .error(
+                            angular.bind($log, $log.error)
+                            )
+        },
+        deleteDataById: function (id, successCallBack) {
+            console.log('deleting ', id)
+            $http({method: 'DELETE', url: baseServiceUrl + '/cars/' + parseInt(id)})
+                    .success(
+                            successCallBack
+                            )
+                    .error(
+                            angular.bind($log, $log.error)
+                            );
+        },
+        postData: function (car) {
+            return $http({method: 'POST', url:
+                        baseServiceUrl + '/cars',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}, transformRequest: function (
+                        obj) {
+                    var str = [];
+                    for (var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    return str.join("&");
                 }
-            );
-		}
-	}
+                , data: car
+            });
+        }
+    }
 
 })

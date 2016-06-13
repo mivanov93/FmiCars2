@@ -22,7 +22,7 @@ var app = angular.module('cars-catalog', ['ngRoute', 'ngResource', 'ngCookies', 
             .otherwise({ redirectTo: '/cars' });
     }])
     .value('toastr', toastr)
-    .constant('baseServiceUrl', 'http://localhost:1860');
+    .constant('baseServiceUrl', 'http://192.168.1.2:8080/CarsMarketBack/rest');
 
 app.config(['usSpinnerConfigProvider', function (usSpinnerConfigProvider) {
     usSpinnerConfigProvider.setDefaults({ color: 'blue' });
