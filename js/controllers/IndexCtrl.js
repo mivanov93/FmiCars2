@@ -1,6 +1,6 @@
-﻿'use strict';
+'use strict';
 
-app.controller('IndexCtrl', function CarsController($scope, $modal, $log) {
+app.controller('IndexCtrl', function ($scope, $modal, $log) {
 
     $scope.loginDialog = function (size) {
             var modalInstance = $modal.open({
