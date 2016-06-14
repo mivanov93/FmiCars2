@@ -1,6 +1,7 @@
 'use strict';
 
-var app = angular.module('cars-catalog', ['ngRoute', 'ngResource', 'ngCookies', 'ui.bootstrap', 'angularSpinner','restangular','ngMap']).
+var app = angular.module('cars-catalog', ['ngRoute', 'ngResource', 'ngCookies', 'ui.bootstrap', 
+                                          'angularSpinner','restangular','ngMap', 'rzModule']).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/manufacturers', {

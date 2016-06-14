@@ -1,68 +1,87 @@
 <div class="container" ng-controller="AddManufacturerController">
 
-    <div>
-        <span us-spinner spinner-key="spinner-add-cars"></span>
-    </div>
+	<div>
+		<span us-spinner spinner-key="spinner-add-cars"></span>
+	</div>
 
-    <div class="row">
-        <div class="col-md-12 well">
-            <form name="addManufacturerForm" class="form-horizontal">
-                <fieldset>
-                    <legend class="text-center h2">Add new manufacturer</legend>
+	<div class="row">
+		<div class="col-md-12 well">
 
-                    <div class="form-group">
-                        <label for="manufacturer-name" class="col-md-2 control-label">
-                            <span class="text-danger">*</span>Name:
-                        </label>
-                        <div class="col-md-10">
-                            <input id="manufacturer-name" type="text" placeholder="enter company name" ng-model="manufacturer.name" required="required" class="form-control" />
-                        </div>
-                    </div>
-      <div class="form-group">
-                        <label for="manufacturer-lat" class="col-md-2 control-label">
-                            <span class="text-danger">*</span>Lat:
-                        </label>
-                        <div class="col-md-10">
-                            <input id="manufacturer-name" type="number" placeholder="enter latitude" ng-model="manufacturer.lat" required="required" class="form-control" />
-                        </div>
-                    </div>      <div class="form-group">
-                        <label for="manufacturer-name" class="col-md-2 control-label">
-                            <span class="text-danger">*</span>Long:
-                        </label>
-                        <div class="col-md-10">
-                            <input id="manufacturer-name" type="number" placeholder="enter longitude" ng-model="manufacturer.lon" required="required" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="manufacturer-image" class="col-md-2 control-label">
-                            <span class="text-danger">*</span>Logo URL:
-                        </label>
-                        <div class="col-md-10">
-                            <input id="manufacturer-image" type="text" placeholder="e.g. http://abc.com/img.jpg" ng-model="manufacturer.imgUrl" required="required" class="form-control" />
-                        </div>
-                    </div>
+			<form name="addManufacturerForm" class="form-horizontal">
 
-                    <div class="pull-right">
-                        <input type="submit" ng-click="postManufacturerData(manufacturer, addManufacturerForm)" ng-disabled="!addManufacturerForm.$valid" class="btn btn-primary" value="Create" />
-                        <a href="#/" class="btn btn-warning">Cancel</a>
-                    </div>
+				<fieldset>
+					<legend class="text-center h2">Add new manufacturer</legend>
 
-                </fieldset>
-            </form>
+					<div class="form-group">
+						<label for="manufacturer-name" class="col-md-2 control-label">
+							<span class="text-danger">*</span>Name:
+						</label>
+						<div class="col-md-10">
+							<input id="manufacturer-name" type="text"
+								placeholder="enter company name" ng-model="manufacturer.name"
+								required="required" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="manufacturer-lat" class="col-md-2 control-label">
+							<span class="text-danger">*</span>Lat:
+						</label>
+						<div class="col-md-10">
+							<input id="manufacturer-name" type="number" step="any"
+								placeholder="enter latitude" ng-model="manufacturer.lat"
+								required="required" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="manufacturer-name" class="col-md-2 control-label">
+							<span class="text-danger">*</span>Long:
+						</label>
+						<div class="col-md-10">
+							<input id="manufacturer-name" type="number" step="any"
+								placeholder="enter longitude" ng-model="manufacturer.lon"
+								required="required" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="manufacturer-image" class="col-md-2 control-label">
+							<span class="text-danger">*</span>Logo URL:
+						</label>
+						<div class="col-md-10">
+							<input id="manufacturer-image" type="text"
+								placeholder="e.g. http://abc.com/img.jpg"
+								ng-model="manufacturer.imgUrl" required="required"
+								class="form-control" />
+						</div>
+					</div>
 
-            <div ng-if="status.done && status.error === 1" class="alert text-danger text-center" style="margin: 0;">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                <span style="margin-right: 30px; ">Status: {{msg}}</span>
-                <button class="btn btn-default" type="button" ng-click="anotherOne()">Try again</button>
-            </div>
-            <div ng-if="status.done && status.error === 0" class="alert text-success text-center" style="margin: 0;">
-                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                <span style="margin-right: 30px; ">Status: {{msg}}</span>
-                <button class="btn btn-default" type="button" ng-click="anotherOne()">Continue</button>
-            </div>
-        </div>
+					<div class="pull-right">
+						<input type="submit"
+							ng-click="postManufacturerData(manufacturer, addManufacturerForm)"
+							ng-disabled="!addManufacturerForm.$valid" class="btn btn-primary"
+							value="Create" /> <a href="#/" class="btn btn-warning">Cancel</a>
+					</div>
 
-    </div>
+				</fieldset>
+			</form>
+
+			<div ng-if="status.done && status.error === 1"
+				class="alert text-danger text-center" style="margin: 0;">
+				<span class="glyphicon glyphicon-exclamation-sign"
+					aria-hidden="true"></span> <span style="margin-right: 30px;">Status:
+					{{msg}}</span>
+				<button class="btn btn-default" type="button"
+					ng-click="anotherOne()">Try again</button>
+			</div>
+			<div ng-if="status.done && status.error === 0"
+				class="alert text-success text-center" style="margin: 0;">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> <span
+					style="margin-right: 30px;">Status: {{msg}}</span>
+				<button class="btn btn-default" type="button"
+					ng-click="anotherOne()">Continue</button>
+			</div>
+		</div>
+
+	</div>
 
 
 </div>

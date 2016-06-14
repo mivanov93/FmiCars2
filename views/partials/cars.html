@@ -1,22 +1,51 @@
-<div class="container">
+<div class="container" style="background-color: black; opacity: 0.85;">
 
-    <div class="row">
-        <div class="col-md-9">
-            <h1 style="color: #ffffff;">Cars</h1>
-        </div>
-        <div class="col-md-3 form-group">
-            <input ng-model="searchText" class="form-control" type="text" placeholder="Search for a car..." />
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-md-12">
 
-    <div ng-controller="CarsController"
-         class="row">
+			<div style="padding: 15px 0;">
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="text-center" style="color: #ffffff; font-weight: bold;">
+							Filter your choice wisely!</h3>
+					</div>
+				</div>
 
-        <div ng-repeat="car in cars.car | filter:searchText"
-             class="col-md-4">
+				<div class="row" style="margin-top: 15px; margin-bottom: 15px;">
+					<div class="col-md-6">
+						<rzslider rz-slider-model="sliderPrice.minValue"
+							rz-slider-high="sliderPrice.maxValue"
+							rz-slider-options="sliderPrice.options"></rzslider>
+					</div>
+					<div class="col-md-6">
+						<rzslider rz-slider-model="sliderYear.minValue"
+							rz-slider-high="sliderYear.maxValue"
+							rz-slider-options="sliderYear.options"></rzslider>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<input ng-model="searchText" class="form-control center-block"
+							type="text" placeholder="Search for a specific car model..."
+							style="max-width: 500px;" />
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="row" ng-controller="CarsController">
+	
+		<div ng-if="!cars" class="col-md-12 text-center">
+			<h3 style="color: #fff; margin: 5% 0;">Unfortunately, there are no car offers at the moment :(</h3>
+		</div>
+
+        <div ng-repeat="car in cars.car | filter:searchText" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 
             <div class="panel car" style="padding: 15px;">
-
+            
                 <div class="row">
                     <div class="panel-title col-md-12" style="text-align:center; min-height: 50px;">
                         <img src="{{car.imgUrl}}" class="img-responsive center-block" alt="No image found" />

@@ -1,7 +1,3 @@
-html {
-    overflow-y: scroll;
-}
-
 map, div[map] {
     display: block;
     width: 100%;
@@ -75,16 +71,9 @@ input.ng-dirty.ng-valid.validity {
   display: none !important;
 }
 
-img{
-  width:100%;
-  max-width:400px;
-}
-
 body {
-    background-image: url("../img/index.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 1500px;
+    background: url("../img/index.jpg") no-repeat center center fixed;
+    min-height: 100%;
 }
 
 .car { margin: 0; }
