@@ -38,7 +38,7 @@
 
                 infowindow.setContent(
                         '<div style="border-bottom: 1px solid #ef4136;">' +
-                        '<span class="h3" style="margin-right: 30px;">' + man.name + '</span>' +
+                        '<span class="h3">' + man.name + '</span>' +
                         '</div>');
                 infowindow.setPosition(center);
                 infowindow.open($scope.mapOpts.myMap, $scope.mapOpts.myMap.markers[markerId]);
