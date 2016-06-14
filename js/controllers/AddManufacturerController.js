@@ -1,8 +1,14 @@
 'use strict';
-app.controller('AddManufacturerController', function AddManufacturerController($scope, manufacturersData) {
+app.controller('AddManufacturerController', function AddManufacturerController(
+        $scope, manufacturersData) {
 
-    $scope.status = { done: false };
-    $scope.anotherOne = function () { $scope.status.done = false; };
+    $scope.status = {done: false};
+    $scope.anotherOne = function () {
+        $scope.status.done = false;
+
+        $scope.manufacturer = {};
+        $scope.addManufacturerForm.$setPristine();
+    };
 
     $scope.postManufacturerData = function (manufacturer, addManForm) {
 
@@ -14,7 +20,8 @@ app.controller('AddManufacturerController', function AddManufacturerController($
         $scope.status.error = "";
         $scope.status.inProg = true;
 
-        manufacturersData.postManufacturerData(manufacturer).then(function (data) {
+        manufacturersData.postManufacturerData(manufacturer).then(function (
+                data) {
             $scope.msg = "Done";
             $scope.status.done = true;
             $scope.status.inProg = false;
@@ -27,6 +34,6 @@ app.controller('AddManufacturerController', function AddManufacturerController($
         });
 
         console.log($scope.addManForm);
-	}
+    }
 });
 
