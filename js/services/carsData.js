@@ -8,8 +8,12 @@ app.factory('carsDataSrv', function ($http, $log,
         getData: function (successCallBack) {
             $http({method: 'GET', url: baseServiceUrl + '/cars'})
                     .success(
-                            successCallBack
-                            )
+                            function (carData) {
+                                carData = angular.isArray(carData.car) ? carData.car
+                                        : [carData.car];
+                                successCallBack(carData);
+                            }
+                    )
                     .error(
                             angular.bind($log, $log.error)
                             )

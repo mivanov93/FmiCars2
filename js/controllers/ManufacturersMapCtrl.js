@@ -1,19 +1,11 @@
 ﻿(function (angular, app) {
     "use strict";
     var ctrlName = "ManufacturersMapCtrl";
-    app.controller(ctrlName, ['$scope', '$rootScope', '$log', '$modalInstance', '$timeout',
-        function ($scope, $rootScope, $log, $modalInstance, $timeout) {
+    app.controller(ctrlName, ['$scope', '$rootScope', '$log', '$modalInstance', '$timeout','manufacturersData',
+        function ($scope, $rootScope, $log, $modalInstance, $timeout,manufacturersData) {
 
 
-            $scope.data = {
-                rows:
-                    [{
-                        shop_name: "random", shop_id: 1,
-                        shop_latitude: 42.7, shop_longitude: 23.3,
-                        shop_img: "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xft1/v/t1.0-1/p50x50/10898069_10153709784301040_4939348701319740534_n.jpg?oh=c561632f1d88db2d5a6b23b873257461&oe=5627E223&__gda__=1444348010_cb5fb056c922948ad4c1b3edae98c7d4"
-
-                    }]
-            };
+            $scope.data = manufacturersData.getManufacturersData(function() { });
             $scope.getShopImagePath = function (shop) {
                 return {
                     url: shop.shop_img,

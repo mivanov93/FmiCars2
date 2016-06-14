@@ -46,11 +46,6 @@ app.controller('CarsController', function CarsController($scope, carsDataSrv) {
 
 	carsDataSrv.getData(function(data) {
 		$scope.cars = data;
-		
-		if ($scope.cars) {
-			$scope.cars.car = angular.isArray($scope.cars.car) ? $scope.cars.car
-					: [ $scope.cars.car ];
-		}
 	});
 
 	$scope.deletionDone = function() {

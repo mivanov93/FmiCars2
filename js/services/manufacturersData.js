@@ -5,9 +5,12 @@ app.factory('manufacturersData', function ($http, $log, baseServiceUrl) {
     return {
         getManufacturersData: function (successCallBack) {
             $http({method: 'GET', url: baseServiceUrl + '/mans'})
-                    .success(
-                            successCallBack
-                            )
+                    .success( function (manData) {
+                                manData = angular.isArray(manData.manufacturer) ? manData.manufacturer
+                                        : [manData.manufacturer];
+                                successCallBack(manData);
+                            }
+                    )
                     .error(
                             angular.bind($log, $log.error)
                             )
