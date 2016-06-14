@@ -1,7 +1,7 @@
 'use strict';
 
 var app = angular.module('cars-catalog', ['ngRoute', 'ngResource', 'ngCookies', 'ui.bootstrap', 
-                                          'angularSpinner','restangular','ngMap', 'rzModule']).
+                                          'angularSpinner','restangular','ngMap', 'rzModule','youtube-embed']).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/manufacturers', {
@@ -31,6 +31,7 @@ app.config(['usSpinnerConfigProvider', function (usSpinnerConfigProvider) {
 
 app.filter('range', function(){
     return function(items, property, min, max) {
+        items=items || [];
         return items.filter(function(item){
           return item[property] >= min && item[property] <= max;
         });
