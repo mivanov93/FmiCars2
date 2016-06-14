@@ -28,3 +28,11 @@ var app = angular.module('cars-catalog', ['ngRoute', 'ngResource', 'ngCookies', 
 app.config(['usSpinnerConfigProvider', function (usSpinnerConfigProvider) {
     usSpinnerConfigProvider.setDefaults({ color: 'blue' });
 }]);
+
+app.filter('range', function(){
+    return function(items, property, min, max) {
+        return items.filter(function(item){
+          return item[property] >= min && item[property] <= max;
+        });
+      };
+    });
