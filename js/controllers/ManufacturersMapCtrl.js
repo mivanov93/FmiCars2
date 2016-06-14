@@ -1,14 +1,17 @@
 ﻿(function (angular, app) {
     "use strict";
     var ctrlName = "ManufacturersMapCtrl";
-    app.controller(ctrlName, ['$scope', '$rootScope', '$log', '$modalInstance', '$timeout','manufacturersData',
-        function ($scope, $rootScope, $log, $modalInstance, $timeout,manufacturersData) {
+    app.controller(ctrlName, ['$scope', '$rootScope', '$log', '$modalInstance', '$timeout', 'manufacturersData',
+        function ($scope, $rootScope, $log, $modalInstance, $timeout,
+                manufacturersData) {
+$scope.mapLoaded={val:false};
 
-
-            $scope.data = manufacturersData.getManufacturersData(function() { });
-            $scope.getShopImagePath = function (shop) {
+            manufacturersData.getManufacturersData(function (data) {
+                $scope.data = data;
+            });
+            $scope.getManImagePath = function (man) {
                 return {
-                    url: shop.shop_img,
+                    url: man.imgUrl,
                     // The origin for this image is 0,0.
                     origin: [0, 0],
                     // The anchor for this image is the base of the flagpole at 0,32.
@@ -25,23 +28,23 @@
             };
 
 
-            $scope.showInfoWindow = function (event, shop, markerId) {
+            $scope.showInfoWindow = function (event, man, markerId) {
                 if (angular.isDefined($scope.currInfoWindow))
                     $scope.currInfoWindow.close();
                 var infowindow = new google.maps.InfoWindow();
                 $scope.currInfoWindow = infowindow;
-                var center = new google.maps.LatLng(shop.shop_latitude, shop.shop_longitude);
+                var center = new google.maps.LatLng(man.shop_latitude, man.shop_longitude);
 
                 infowindow.setContent(
                         '<div style="border-bottom: 1px solid #ef4136;">' +
-                        '<span class="h3" style="margin-right: 30px;">' + shop.brand_name + '</span>' +
-                        '<span>' + shop.shop_phone + '</span>' +
+                        '<span class="h3" style="margin-right: 30px;">' + man.model + '</span>' +
+                        '<span>' + man.shop_phone + '</span>' +
                         '</div>' +
-                        '<h6>Адрес: ' + shop.shop_location + '</h6>' +
-                        '<div>Понеделник - петък : ' + shop.shop_opens + ' - ' + shop.shop_closes + '</div>' +
-                        '<div>Събота : ' + shop.shop_opens_sat + ' - ' + shop.shop_closes_sat + '</div>' +
-                        '<div>Неделя : ' + shop.shop_opens_sun + ' - ' + shop.shop_closes_sun + '</div>' +
-                        '<div style="margin: 10px 0;">Паркоместа : ' + shop.shop_park_slots + '</div>');
+                        '<h6>Адрес: ' + man.shop_location + '</h6>' +
+                        '<div>Понеделник - петък : ' + man.shop_opens + ' - ' + man.shop_closes + '</div>' +
+                        '<div>Събота : ' + man.shop_opens_sat + ' - ' + man.shop_closes_sat + '</div>' +
+                        '<div>Неделя : ' + man.shop_opens_sun + ' - ' + man.shop_closes_sun + '</div>' +
+                        '<div style="margin: 10px 0;">Паркоместа : ' + man.shop_park_slots + '</div>');
 
                 infowindow.open($scope.mapOpts.myMap, $scope.mapOpts.myMap.markers[markerId]);
             };
@@ -49,7 +52,7 @@
                 coords: [1, 1, 1, 50, 50, 50, 50, 1],
                 type: 'poly'
             }
-            $scope.mapOpts = { render: false, myMap: undefined };
+            $scope.mapOpts = {render: false, myMap: undefined};
 
 
             $scope.$on('$destroy', function () {

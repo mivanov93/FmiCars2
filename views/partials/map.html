@@ -23,14 +23,14 @@
              zoom="12">
 
 
-            <marker ng-repeat="$shop in data.rows"
-                    id="shopMarkerId{{::$shop.shop_id}}"
-                    position="[{{::$shop.shop_latitude}},{{::$shop.shop_longitude}}]"
+            <marker ng-repeat="$man in data"
+                    id="shopMarkerId{{::$man.id}}"
+                    position="[{{::$man.lat}},{{::$man.lon}}]"
                     anchorpoint=""
-                    icon="{{::getShopImagePath($shop)}}"
+                    icon="{{::getManImagePath($man)}}"
                     shape="{{::iconShape}}"
-                    on-click="showInfoWindow(event, $shop,'shopMarkerId'+$shop.shop_id)"
-                    title="{{::$shop.shop_name}}">
+                    on-click="showInfoWindow(event, $man,'shopMarkerId'+$man.shop_id)"
+                    title="{{::$man.model}}">
             </marker>
 
 
