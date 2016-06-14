@@ -4,10 +4,11 @@
     app.controller(ctrlName, ['$scope', '$rootScope', '$log', '$modalInstance', '$timeout', 'manufacturersData',
         function ($scope, $rootScope, $log, $modalInstance, $timeout,
                 manufacturersData) {
-$scope.mapLoaded={val:false};
+            $scope.mapLoaded = {val: false};
 
             manufacturersData.getManufacturersData(function (data) {
                 $scope.data = data;
+               // console.log(data);
             });
             $scope.getManImagePath = function (man) {
                 return {
