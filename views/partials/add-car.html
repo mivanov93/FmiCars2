@@ -61,7 +61,9 @@
                             <span class="text-danger">*</span>Manufacturer:
                         </label>
                         <div class="col-md-10">
-                            <input id="Manufacturer" type="text" placeholder="e.g. VW Group" ng-model="car.manId" required="required" class="form-control" />
+                            <select id="Manufacturer"  
+                                    ng-options="man.name for man in mans track by man.id" 
+                                    ng-model="car.manId"required="required" class="form-control">
                         </div>
                     </div>
 
