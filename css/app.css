@@ -76,6 +76,12 @@ body {
     min-height: 100%;
 }
 
+.well {
+	background-color: black; 
+	opacity: 0.85;
+	color: #fff;
+}
+
 .car { margin: 0; }
 .car:hover + .comments {
     z-index: 10;
