@@ -34,23 +34,17 @@
                     $scope.currInfoWindow.close();
                 var infowindow = new google.maps.InfoWindow();
                 $scope.currInfoWindow = infowindow;
-                var center = new google.maps.LatLng(man.shop_latitude, man.shop_longitude);
+                var center = new google.maps.LatLng(man.lat, man.lon);
 
                 infowindow.setContent(
                         '<div style="border-bottom: 1px solid #ef4136;">' +
-                        '<span class="h3" style="margin-right: 30px;">' + man.model + '</span>' +
-                        '<span>' + man.shop_phone + '</span>' +
-                        '</div>' +
-                        '<h6>Адрес: ' + man.shop_location + '</h6>' +
-                        '<div>Понеделник - петък : ' + man.shop_opens + ' - ' + man.shop_closes + '</div>' +
-                        '<div>Събота : ' + man.shop_opens_sat + ' - ' + man.shop_closes_sat + '</div>' +
-                        '<div>Неделя : ' + man.shop_opens_sun + ' - ' + man.shop_closes_sun + '</div>' +
-                        '<div style="margin: 10px 0;">Паркоместа : ' + man.shop_park_slots + '</div>');
-
+                        '<span class="h3" style="margin-right: 30px;">' + man.name + '</span>' +
+                        '</div>');
+infowindow.setPosition(center);
                 infowindow.open($scope.mapOpts.myMap, $scope.mapOpts.myMap.markers[markerId]);
             };
             $scope.iconShape = {
-                coords: [1, 1, 1, 50, 50, 50, 50, 1],
+                coords: [1, 1, 1, 150, 150, 150, 150, 1],
                 type: 'poly'
             }
             $scope.mapOpts = {render: false, myMap: undefined};
